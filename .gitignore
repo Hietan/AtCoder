@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# AtCoder
+*.in
+tests/
+contest.acc.json
