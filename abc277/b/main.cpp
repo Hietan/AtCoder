@@ -53,7 +53,73 @@ void yon(bool b){
   else cout << "No" << endl;
 }
 
+int checknum(char c){
+  switch(c){
+    case 'A':
+      return 1;
+    case 'T':
+      return 10;
+    case 'J':
+      return 11;
+    case 'Q':
+      return 12;
+    case 'K':
+      return 13;
+    default:
+      int num = c - '0';
+      if(num >=2 and num <= 9){
+        return num;
+      }
+  }
+  return 0;
+}
+
+bool check(vector<bool> &vec, string s){
+  int num = checknum(s.at(1)) - 1;
+  if(num == -1 or vec.at(num)){
+    return false;
+  }
+  else {
+    vec.at(num) = true;
+  }
+  return true;
+}
+
+bool solve(vector<string> str, int n){
+  vector<bool> h(13, false), d(13, false), c(13, false), s(13, false);
+  bool res;
+  rep(i, n){
+    res = true;
+    switch(str.at(i).at(0)){
+      case 'H':
+      res = check(h, str.at(i));
+      break;
+      case 'D':
+      res = check(d, str.at(i));
+      break;
+      case 'C':
+      res = check(c, str.at(i));
+      break;
+      case 'S':
+      res = check(s, str.at(i));
+      break;
+      default:
+      return false;
+    }
+    if(!res) return false;
+  }
+  return true;
+}
+
 int main(void){
+
+  int n;
+  cin >> n;
+
+  vector<string> s(n);
+  vec_in(s);
+
+  yon(solve(s, n));
 
   return 0;
 }

@@ -53,7 +53,21 @@ void yon(bool b){
   else cout << "No" << endl;
 }
 
+int solve(int n, int x){
+  rep(i, n){
+    int p;
+    cin >> p;
+
+    if(p == x) return i+1;
+  }
+  return -1;
+}
+
 int main(void){
+  int n, x;
+  cin >> n >> x;
+
+  cout << solve(n, x) << endl;
 
   return 0;
 }

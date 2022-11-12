@@ -36,9 +36,8 @@ void vec2_out(vector<vector<T>> v){
   vec2_out(v, ' ');
 }
 
-template<typename T>
-T vec_sum(vector<T> v){
-  T sum = 0;
+long vec_sum(vector<int> v){
+  long sum = 0;
   rep(i, v.size()) sum += v.at(i);
   return sum;
 }
@@ -54,6 +53,41 @@ void yon(bool b){
 }
 
 int main(void){
+  int n, m;
+  cin >> n >> m;
+
+  vector<int> a(n);
+  vec_in(a);
+
+  sort(a.begin(), a.end());
+
+  long total_sum = vec_sum(a);
+
+  long res = 0;
+  for(int i = 0; i < n; i++){
+    long sum = 0;
+    for(i = i; i < n; i++){
+      sum += a.at(i);
+      if(i < n-1 and a.at(i+1) - a.at(i) > 1) break;
+    }
+    res = res > sum ? res : sum;
+  }
+
+  if(a.at(0) == 0 and a.at(n-1) == m - 1){
+    long sum = 0;
+    int i;
+    for(i = 0; i < n; i++){
+      sum += a.at(i);
+      if(i < n-1 and a.at(i+1) - a.at(i) > 1) break;
+    }
+    for(int j = n-1; j > i; j--){
+      sum += a.at(j);
+      if(j > 0 and a.at(j) - a.at(j-1) > 1) break;
+    }
+    res = res > sum ? res : sum;
+  }
+
+  cout << total_sum - res << endl;
 
   return 0;
 }
