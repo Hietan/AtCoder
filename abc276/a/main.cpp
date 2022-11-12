@@ -54,6 +54,13 @@ void yon(bool b){
 }
 
 int main(void){
+  string s;
+  cin >> s;
 
+  int ans = -1;
+  rep(i, s.size()) if(s.at(i) == 'a') ans = i+1;
+
+  cout << ans << endl;
+  
   return 0;
 }
