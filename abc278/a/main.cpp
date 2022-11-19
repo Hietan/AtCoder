@@ -48,5 +48,18 @@ void yon(bool b){
 
 int main(void){
 
+  int n, k;
+  cin >> n >> k;
+
+  vector<int> a(n);
+  vec_in(a);
+
+  rep(i, k){
+    a.erase(a.begin());
+    a.push_back(0);
+  }
+
+  vec_out(a);
+
   return 0;
 }

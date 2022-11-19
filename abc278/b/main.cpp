@@ -46,7 +46,30 @@ void yon(bool b){
   else cout << "No" << endl;
 }
 
+vector<int> solve(int h, int m){
+  while(true){
+    int low_h = (h/10) * 10 + (m/10);
+    int low_m = (h%10) * 10 + (m%10);
+    if((0 <= low_h) and (low_h <= 23) and (0 <= low_m) and (low_m <= 59)){
+      vector<int> res = {h, m};
+      return res;
+    }
+    m++;
+    if(m >= 60){
+      h++;
+      m -= 60;
+    }
+    if(h >= 24){
+      h -= 24;
+    }
+  }
+}
+
 int main(void){
+  int h, m;
+  cin >> h >> m;
+
+  vec_out(solve(h, m));
 
   return 0;
 }

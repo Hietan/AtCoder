@@ -48,5 +48,27 @@ void yon(bool b){
 
 int main(void){
 
+  int n, q;
+  cin >> n >> q;
+
+  set<pair<int, int>> f;
+
+  rep(i, q){
+    int t, a, b;
+    cin >> t >> a >> b;
+
+    switch(t){
+      case 1:
+        f.insert(make_pair(a, b));
+        break;
+      case 2:
+        f.erase(make_pair(a, b));
+        break;
+      case 3:
+        yon(f.count(make_pair(a, b)) and f.count(make_pair(b, a)));
+        break;
+    }
+  }
+
   return 0;
 }

@@ -46,7 +46,59 @@ void yon(bool b){
   else cout << "No" << endl;
 }
 
+int cou = 0;
+int base = 0;
+int qc;
+bool is_first = true;
+vector<int> a;
+
+void solve(){
+  map<int, long> adds;
+
+  while(cou < qc){
+    int q, i, x;
+    cin >> q >> i;
+    cou++;
+
+    switch(q){
+      case 1:
+        is_first = false;
+        base = i;
+        return;
+      case 2:
+        cin >> x;
+        if(adds.count(i)){
+          adds[i] += x;
+        } else {
+          adds[i] = x;
+        }
+        break;
+      case 3:
+        long res = (is_first ? a.at(i-1) : base);
+        if(adds.count(i)){
+          res += adds[i];
+        }
+        cout << res << endl;
+        break;
+    }
+  }
+
+  return;
+}
+
 int main(void){
 
+  int n;
+  cin >> n;
+
+  a = vector<int>(n);
+  vec_in(a);
+
+  bool is_first = true;
+
+  cin >> qc;
+  while(cou < qc){
+    solve();
+  }
   return 0;
 }
