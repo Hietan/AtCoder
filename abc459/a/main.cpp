@@ -1,0 +1,1 @@
+/home/kazuma-ya/Documents/ghq/GitHub/Hietan/AtCoder_Templates/main.cpp
