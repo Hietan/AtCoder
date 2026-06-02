@@ -4,9 +4,6 @@ a.out
 *.exe
 *.o
 
-# Generated submission files
-submit.cpp
-
 # online-judge-tools sample cases
 test/
 tests/
